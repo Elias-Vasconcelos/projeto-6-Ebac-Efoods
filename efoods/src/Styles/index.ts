@@ -10,4 +10,8 @@ export const EstiloGlobal = createGlobalStyle`
 }
 `
 
-export const cores = {}
+export const cores = {
+  Rosa: '#E66767',
+  CorFundo: '#FFF8F2',
+  CorFooter: '#FFEBD9'
+}
