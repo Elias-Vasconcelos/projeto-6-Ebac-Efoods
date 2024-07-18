@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { cores } from '../../Styles'
 
-export const Baner = styled.header`
+export const Baner = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   align-items: center;
