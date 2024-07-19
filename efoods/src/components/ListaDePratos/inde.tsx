@@ -22,3 +22,5 @@ const ListaPratos = ( {ApiPratos}: Props ) => {
         </ListaContainer>
     )
 }
+
+export default ListaPratos
