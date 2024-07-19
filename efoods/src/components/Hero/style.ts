@@ -5,7 +5,6 @@ import { cores } from '../../Styles'
 export const Baner = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
-  align-items: center;
   color: ${cores.Rosa};
   background-color: ${cores.CorFooter};
   display: flex;

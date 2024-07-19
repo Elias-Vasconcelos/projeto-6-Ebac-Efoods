@@ -1,5 +1,6 @@
 import Hero from '../../components/Hero'
 import ListaDeRestaurantes from '../../components/ListaDeRestaurantes'
+import Footer from '../../components/Footer'
 import Restaurantes from '../../modules/Restaurantes'
 import { EstiloGlobal } from '../../Styles'
 import Sushi from '../../assets/Sushi.png'
@@ -67,6 +68,7 @@ const Home = () => (
     <EstiloGlobal />
     <Hero />
     <ListaDeRestaurantes restaurantes={ApiRestaurant} />
+    <Footer />
   </>
 )
 export default Home
