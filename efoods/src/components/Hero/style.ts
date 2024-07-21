@@ -18,7 +18,9 @@ export const Baner = styled.div`
 export const Titulo = styled.h2`
   margin-top: 138px;
   width: 536px;
-  text-align: center;
   font-size: 36px;
   line-height: 42.19px;
+  margin-botton: 40px;
+  margin-bottom: 40px;
+  text-align: center;
 `

@@ -4,10 +4,10 @@ import Home from './Pages/Home'
 import Perfil from './Pages/Perfil'
 
 const Rotas = () => (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Perfil" element={<Perfil />} />
-    </Routes>
-  )
-  
-  export default Rotas
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/Perfil" element={<Perfil />} />
+  </Routes>
+)
+
+export default Rotas

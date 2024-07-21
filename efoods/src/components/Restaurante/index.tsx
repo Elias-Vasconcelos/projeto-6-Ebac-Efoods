@@ -21,7 +21,7 @@ const Restaurante = ({ descricao, imagem, nota, teg, titulo }: Props) => (
       </div>
     </div>
     <S.Descricao> {descricao} </S.Descricao>
-    <S.Button>Saiba mais</S.Button>
+    <S.Button to={'/Perfil'}>Saiba mais</S.Button>
   </S.Card>
 )
 

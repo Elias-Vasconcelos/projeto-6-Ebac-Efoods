@@ -1,13 +1,15 @@
 import Logo from '../../assets/logo.svg'
-import CabecalhoContainer from './styles'
+import * as S from './styles'
 import Headerimg from '../../assets/Cabecalho.svg'
 const Cabecalho = () => {
   return (
-    <CabecalhoContainer style={{ backgroundImage: `url(${Headerimg}) ` }} > 
+    <S.CabecalhoContainer style={{ backgroundImage: `url(${Headerimg}) ` }}>
+      <S.Content>
         <h3>Restaurantes</h3>
         <img src={Logo} alt="Logo" />
         <p>0 produto(s) no carrinho</p>
-    </CabecalhoContainer> 
+      </S.Content>
+    </S.CabecalhoContainer>
   )
 }
 export default Cabecalho

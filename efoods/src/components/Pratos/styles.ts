@@ -7,8 +7,8 @@ export const PratoCard = styled.div`
   color: ${cores.CorFooter};
 
   img {
-    width: 100%;
-    margin: 8px;
+    width: 94%;
+    margin: 3%;
   }
 
   h4 {
@@ -24,10 +24,12 @@ export const PratoCard = styled.div`
   }
 
   span {
-    width: 100%;
-    margin: 8px;
+    width: 94%;
+    margin: 3%;
     color: ${cores.Rosa};
     background-color: ${cores.CorFooter};
     text-align: center;
+    display: inline-block;
+    font-weight: bold;
   }
 `
