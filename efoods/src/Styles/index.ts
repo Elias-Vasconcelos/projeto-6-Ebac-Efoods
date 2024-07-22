@@ -6,6 +6,17 @@ export const cores = {
   CorFooter: '#FFEBD9',
   Branco: '#fff'
 }
+
+export const BotaoAdicionar = styled.span`
+    width: 94%;
+    margin: 3%;
+    color: ${cores.Rosa};
+    background-color: ${cores.CorFooter};
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+`
+
 export const EstiloGlobal = createGlobalStyle`
   * {
     margin: 0;
