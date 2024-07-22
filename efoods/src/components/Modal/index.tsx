@@ -4,8 +4,8 @@ import Pizza from '../../assets/Pizza.png'
 
 const Modal = () => (
     <S.ModalContainer>
-        <div style={{   }} >
-
+        <div style={{ width: 100% ; justifyContent: end }} >
+            <span>X</span>
         </div>
         <S.ModalContent>
             <img src={Pizza} alt="Pizza" />
