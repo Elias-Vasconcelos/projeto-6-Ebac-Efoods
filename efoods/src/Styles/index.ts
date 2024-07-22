@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   Rosa: '#E66767',
@@ -8,13 +8,13 @@ export const cores = {
 }
 
 export const BotaoAdicionar = styled.span`
-    width: 94%;
-    margin: 3%;
-    color: ${cores.Rosa};
-    background-color: ${cores.CorFooter};
-    text-align: center;
-    display: inline-block;
-    font-weight: bold;
+  width: 94%;
+  margin: 3%;
+  color: ${cores.Rosa};
+  background-color: ${cores.CorFooter};
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
 `
 
 export const EstiloGlobal = createGlobalStyle`
