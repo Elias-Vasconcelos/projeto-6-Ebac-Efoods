@@ -1,22 +1,28 @@
-import Restaurantes from '../../modules/Restaurantes'
+import { TipoApi } from '../../Pages/Home'
 import * as S from './styles'
 
 import star from '../../assets/Star.svg'
 
-type Props = Restaurantes
+type Props = TipoApi
 
-const Restaurante = ({ descricao, imagem, nota, teg, titulo }: Props) => (
+const Restaurante = ({
+  titulo,
+  avaliacao,
+  capa,
+  descricao,
+  tipo,
+  destacado
+}: Props) => (
   <S.Card>
     <div style={{ position: 'absolute', top: 16, right: 16 }}>
-      {teg.map((Tegs) => (
-        <S.Teg key={Tegs}> {Tegs} </S.Teg>
-      ))}
+      <S.Teg> {tipo} </S.Teg>
+      {destacado === true ? <S.Teg> Destaque da semana </S.Teg> : <div></div>}
     </div>
-    <S.Imagem src={imagem} />
+    <S.Imagem src={capa} />
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <S.Titulo> {titulo} </S.Titulo>
       <div style={{ display: 'flex' }}>
-        <S.Nota> {nota} </S.Nota>
+        <S.Nota> {avaliacao} </S.Nota>
         <img src={star} alt="star" />
       </div>
     </div>

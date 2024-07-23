@@ -9,8 +9,11 @@ export const Card = styled.div`
 `
 export const Imagem = styled.img`
   width: 100%;
+  max-height: 217px;
+  height: 100%;
   border: 1px solid ${cores.Rosa};
   margin-bottom: 8px;
+  object-fit: cover;
 `
 export const Titulo = styled.h3`
   font-size: 18px;

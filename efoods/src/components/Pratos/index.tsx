@@ -1,25 +1,30 @@
 import * as S from './styles'
-import Pratos from '../../modules/Pratos'
 import { BotaoAdicionar } from '../../Styles'
 import { useState } from 'react'
 import Modal from '../Modal'
+import { Cardapio } from '../../Pages/Home'
 
-type Props = Pratos
+type Props = {
+  Content: Cardapio
+}
 
-const Prato = ({ imagem, titulo, descricao }: Props) => {
+const Prato = ({ Content }: Props) => {
   const [viewModal, setviewModal] = useState(false)
   return (
     <>
       <S.PratoCard>
-        <img src={imagem} alt="" />
-        <h4>{titulo}</h4>
-        <p>{descricao}</p>
+        <img src={Content.foto} alt="" />
+        <h4>{Content.nome}</h4>
+        <p>{Content.descricao}</p>
+        <br />
+        <br />
+        <p> {Content.porcao} </p>
         <BotaoAdicionar onClick={() => setviewModal(true)}>
           Adicionar ao carrinho
         </BotaoAdicionar>
       </S.PratoCard>
       {viewModal === true ? (
-        <Modal Closer={() => setviewModal(false)} />
+        <Modal Closer={() => setviewModal(false)} Content={Content} />
       ) : (
         <div></div>
       )}

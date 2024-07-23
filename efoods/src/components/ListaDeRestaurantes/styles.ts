@@ -6,6 +6,6 @@ export const ListContainer = styled.ul`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 472px);
+  grid-template-rows: repeat(472px);
   gap: 48px 80px;
 `

@@ -1,13 +1,14 @@
 import * as S from './styles'
 import { BotaoAdicionar } from '../../Styles'
-import Pizza from '../../assets/Pizza.png'
 import Close from '../../assets/close.svg'
+import { Cardapio } from '../../Pages/Home'
 
 type Props = {
   Closer: () => void
+  Content: Cardapio
 }
 
-const Modal = ({ Closer }: Props) => (
+const Modal = ({ Closer, Content }: Props) => (
   <S.ModalContainer onClick={() => Closer()}>
     <div style={{ position: 'relative' }}>
       <div
@@ -23,25 +24,18 @@ const Modal = ({ Closer }: Props) => (
         </span>
       </div>
       <S.ModalContent>
-        <img src={Pizza} alt="Pizza" />
+        <img src={Content.foto} alt="Pizza" />
         <div>
-          <h4>Pizza Marguerita</h4>
+          <h4>{Content.nome}</h4>
           <p>
-            A pizza Margherita e uma pizza classica da culinaria italiana,
-            reconhecida por sua simplicidade e sabor inigualavel. Ela e feita
-            com uma base de massa fina e crocante, coberta com molho de tomate
-            fresco, queijo mussarela de alta qualidade, manjericao fresco e
-            azeite de oliva extra-virgem. A combinacao de sabores e perfeita,
-            com o molho de tomate suculento e ligeiramente acido, o queijo
-            derretido e cremoso e as folhas de manjericao frescas, que adicionam
-            um toque de sabor herbaceo. E uma pizza simples, mas deliciosa, que
-            agrada a todos os paladares e e uma otima opcao para qualquer
-            ocasiao.
+            {Content.descricao}
             <br />
             <br />
-            Serve: de 2 a 3 pessoas
+            {Content.porcao}
           </p>
-          <BotaoAdicionar> Adicionar ao carrinho - R$ 60,90 </BotaoAdicionar>
+          <BotaoAdicionar>
+            ` Adicionar ao carrinho - ${Content.preco}`
+          </BotaoAdicionar>
         </div>
       </S.ModalContent>
     </div>

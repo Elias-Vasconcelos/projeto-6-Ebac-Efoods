@@ -1,65 +1,28 @@
-import { EstiloGlobal } from '../../Styles'
+import { useEffect, useState } from 'react'
 
+import { EstiloGlobal } from '../../Styles'
 import Footer from '../../components/Footer'
 import Cabecalho from '../../components/Header'
 import Apresentacao from '../../components/Apresentacao'
-import Pratos from '../../modules/Pratos'
 import ListaPratos from '../../components/ListaDePratos'
+import { Cardapio } from '../Home'
 
-import Pizza from '../../assets/Pizza.png'
+const Perfil = () => {
+  const [ApiPratos, SetApiPratos] = useState<Cardapio[]>([])
 
-const Api: Pratos[] = [
-  {
-    imagem: Pizza,
-    titulo: 'Pizza Marguerita',
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    id: 1
-  },
-  {
-    imagem: Pizza,
-    titulo: 'Pizza Marguerita',
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    id: 2
-  },
-  {
-    imagem: Pizza,
-    titulo: 'Pizza Marguerita',
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    id: 3
-  },
-  {
-    imagem: Pizza,
-    titulo: 'Pizza Marguerita',
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    id: 4
-  },
-  {
-    imagem: Pizza,
-    titulo: 'Pizza Marguerita',
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    id: 5
-  },
-  {
-    imagem: Pizza,
-    titulo: 'Pizza Marguerita',
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    id: 6
-  }
-]
-
-const Perfil = () => (
-  <>
-    <EstiloGlobal />
-    <Cabecalho />
-    <Apresentacao />
-    <ListaPratos ApiPratos={Api} />
-    <Footer />
-  </>
-)
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => SetApiPratos(res))
+  }, [])
+  return (
+    <>
+      <EstiloGlobal />
+      <Cabecalho />
+      <Apresentacao />
+      <ListaPratos ApiPratos={ApiPratos} />
+      <Footer />
+    </>
+  )
+}
 export default Perfil
