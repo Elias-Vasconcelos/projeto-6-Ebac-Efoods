@@ -6,6 +6,26 @@ import { EstiloGlobal } from '../../Styles'
 import Sushi from '../../assets/Sushi.png'
 import Italiano from '../../assets/italiano.png'
 
+interface Cardapio {
+  foto: string;
+  preco: number;
+  id: number;
+  nome: string;
+  descricao: string;
+  porcao: string;
+}
+
+type Restaurante = {
+  id: number,
+  titulo: string,
+  destacado: boolean,
+  tipo: string,
+  avaliacao: number,
+  descricao: string,
+  capa: string,
+  cardapio:  Cardapio[]
+}
+
 const ApiRestaurant: Restaurantes[] = [
   {
     descricao:
