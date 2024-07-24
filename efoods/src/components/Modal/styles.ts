@@ -30,7 +30,8 @@ export const ModalContent = styled.div`
     display: block;
     max-width: 280px;
     width: 100%;
-    height: 100%;
+    height: 280px;
+    object-fit: cover;
   }
 
   h4 {
@@ -41,10 +42,11 @@ export const ModalContent = styled.div`
 
   p {
     line-height: 22px;
+    height: 176px;
   }
 
   ${BotaoAdicionar} {
-    max-width: 240px;
+    max-width: 340px;
     width: 100%;
     padding: 4px 16px;
   }

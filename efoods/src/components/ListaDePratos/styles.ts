@@ -6,5 +6,6 @@ export const ListaContainer = styled.ul`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 320px);
+  grid-template-rows: repeat(338px);
   gap: 32px;
 `

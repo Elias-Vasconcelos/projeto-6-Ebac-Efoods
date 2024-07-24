@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { cores } from '../../Styles'
+import { Link } from 'react-router-dom'
 
 export const CabecalhoContainer = styled.header`
   color: ${cores.Rosa};
@@ -16,4 +17,8 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+`
+export const Links = styled(Link)`
+  font-size: 18px;
+  color: ${cores.Rosa};
 `

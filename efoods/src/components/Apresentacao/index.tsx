@@ -7,7 +7,9 @@ type Props = {
 
 const Apresentacao = ({ Content }: Props) => {
   return (
-    <S.ApresentacaoContainer style={{ backgroundImage: `url(${Content.}) ` }}>
+    <S.ApresentacaoContainer
+      style={{ backgroundImage: `url(${Content.capa}) ` }}
+    >
       <S.Content>
         <p> {Content.tipo} </p>
         <h3> {Content.titulo} </h3>

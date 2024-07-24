@@ -5,10 +5,12 @@ export const PratoCard = styled.div`
   background-color: ${cores.Rosa};
   position: relative;
   color: ${cores.CorFooter};
-
+  height: 100%;
   img {
     width: 94%;
     margin: 3%;
+    height: 217px;
+    object-fit: cover;
   }
 
   h4 {
@@ -17,6 +19,9 @@ export const PratoCard = styled.div`
     margin-left: 8px;
   }
 
+  p:first-of-type {
+    height: 64px;
+  }
   p {
     font-size: 14px;
     line-height: 22px;
@@ -31,5 +36,7 @@ export const PratoCard = styled.div`
     text-align: center;
     display: inline-block;
     font-weight: bold;
+    img {
+    }
   }
 `

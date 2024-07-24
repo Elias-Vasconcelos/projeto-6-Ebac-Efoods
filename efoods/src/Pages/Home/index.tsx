@@ -1,7 +1,6 @@
+import Footer from '../../components/Footer'
 import Hero from '../../components/Hero'
 import ListaDeRestaurantes from '../../components/ListaDeRestaurantes'
-import Footer from '../../components/Footer'
-import { EstiloGlobal } from '../../Styles'
 import { useEffect, useState } from 'react'
 
 export interface Cardapio {
@@ -33,7 +32,9 @@ const Home = () => {
   }, [])
   return (
     <>
+      <Hero />
       <ListaDeRestaurantes restaurantes={Api} />
+      <Footer />
     </>
   )
 }

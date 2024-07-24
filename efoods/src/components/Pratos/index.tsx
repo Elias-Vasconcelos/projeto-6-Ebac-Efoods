@@ -10,13 +10,13 @@ type Props = {
 
 const Prato = ({ Content }: Props) => {
   const [viewModal, setviewModal] = useState(false)
+  const sliceDescription = (descricao: string) => descricao.slice(0, 92) + '...'
   return (
     <>
       <S.PratoCard>
         <img src={Content.foto} alt="" />
         <h4>{Content.nome}</h4>
-        <p>{Content.descricao}</p>
-        <br />
+        <p>{sliceDescription(Content.descricao)}</p>
         <br />
         <p> {Content.porcao} </p>
         <BotaoAdicionar onClick={() => setviewModal(true)}>
