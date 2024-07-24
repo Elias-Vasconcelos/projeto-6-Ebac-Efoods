@@ -11,7 +11,8 @@ const Restaurante = ({
   capa,
   descricao,
   tipo,
-  destacado
+  destacado,
+  id
 }: Props) => (
   <S.Card>
     <div style={{ position: 'absolute', top: 16, right: 16 }}>
@@ -27,7 +28,7 @@ const Restaurante = ({
       </div>
     </div>
     <S.Descricao> {descricao} </S.Descricao>
-    <S.Button to={'/Perfil'}>Saiba mais</S.Button>
+    <S.Button to={`/Perfil/${id}`}>Saiba mais</S.Button>
   </S.Card>
 )
 
