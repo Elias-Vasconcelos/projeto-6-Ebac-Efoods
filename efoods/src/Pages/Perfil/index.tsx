@@ -10,17 +10,17 @@ import { TipoApi, Cardapio } from '../Home'
 
 const Perfil = () => {
   const { id } = useParams()
-  const [Api, SetApi] = useState<TipoApi>({})
-  const [ApiPratos, SetApiPratos] = useState<Cardapio[]>([])
+  const [api, Setapi] = useState<TipoApi>({})
+  const [apiPratos, SetapiPratos] = useState<Cardapio[]>([])
   
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
-      .then((res) => SetApi(res))
-  }, [])
+      .then((res) => Setapi(res))
+  }, [id])
 
-  const Cardapio = SetApiPratos(Api.cardapio)
+  const Cardapio = SetapiPratos(Api.cardapio)
   return (
     <>
       <Apresentacao  Content={Api} />
