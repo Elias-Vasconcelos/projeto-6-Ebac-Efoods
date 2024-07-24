@@ -6,7 +6,10 @@ import Rotas from './Routes'
 function App() {
   return (
     <BrowserRouter>
-      <Rotas />
+      <EstiloGlobal />
+      <Hero />
+        <Rotas />
+      <Footer />
     </BrowserRouter>
   )
 }

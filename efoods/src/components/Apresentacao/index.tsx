@@ -1,12 +1,16 @@
 import * as S from './styles'
-import Imgfundo from '../../assets/apresentacao.png'
+import { TipoApi } from '../../Pages/Home'
 
-const Apresentacao = () => {
+type Props = {
+  Content: TipoApi
+}
+
+const Apresentacao = ({ Content }: Props) => {
   return (
-    <S.ApresentacaoContainer style={{ backgroundImage: `url(${Imgfundo}) ` }}>
+    <S.ApresentacaoContainer style={{ backgroundImage: `url(${Content.}) ` }}>
       <S.Content>
-        <p>Italiana</p>
-        <h3>La Dolce Vita Trattoria</h3>
+        <p> {Content.tipo} </p>
+        <h3> {Content.titulo} </h3>
       </S.Content>
     </S.ApresentacaoContainer>
   )

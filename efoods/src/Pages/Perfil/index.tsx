@@ -17,11 +17,8 @@ const Perfil = () => {
   }, [])
   return (
     <>
-      <EstiloGlobal />
-      <Cabecalho />
-      <Apresentacao />
+      <Apresentacao  />
       <ListaPratos ApiPratos={ApiPratos} />
-      <Footer />
     </>
   )
 }

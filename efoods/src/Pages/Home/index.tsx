@@ -33,10 +33,7 @@ const Home = () => {
   }, [])
   return (
     <>
-      <EstiloGlobal />
-      <Hero />
       <ListaDeRestaurantes restaurantes={Api} />
-      <Footer />
     </>
   )
 }
