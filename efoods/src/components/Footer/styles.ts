@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../Styles'
+import { BotaoAdicionar, cores } from '../../Styles'
 
 export const Rodape = styled.footer`
   background-color: ${cores.CorFooter};
