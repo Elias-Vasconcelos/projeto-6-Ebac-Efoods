@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../Styles'
+import { cores, BotaoAdicionar } from '../../Styles'
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -13,12 +13,12 @@ export const CartContainer = styled.div`
   z-index: 1;
 `
 export const CartContent = styled.div`
-  width: 360px ; 
+  width: 360px;
   height: 100%;
   background-color: ${cores.Rosa};
   font-size: 14px;
 
- ${BotaoAdicionar} {
+  ${BotaoAdicionar} {
     max-width: 340px;
     width: 100%;
     padding: 4px 16px;
@@ -26,10 +26,7 @@ export const CartContent = styled.div`
 `
 
 export const cardList = styled.ul`
-  max-height: 928px;
-  overflow: hidden;
-  overflow-y: scroll;
-  margin-bottom: 24px;
+  margin: 24px 0;
 `
 
 export const card = styled.li`
@@ -38,15 +35,28 @@ export const card = styled.li`
   background-color: ${cores.CorFooter};
   color: ${cores.Rosa};
   display: flex;
+  position: relative;
 
-  img {
-    width: 80px ; 
+  > img {
+    width: 80px;
     height: 80px;
+    object-fit: cover;
+    margin-right: 8px;
   }
 
   h3 {
     font-size: 18px;
-    font-Weight: bold;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  span {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    background: transparent;
   }
 `
 export const Total = styled.div`
@@ -54,5 +64,5 @@ export const Total = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-Weight: bold;
+  font-weight: bold;
 `

@@ -27,6 +27,12 @@ export const RodapeContainer = styled.div`
     text-align: center;
     font-size: 10px;
   }
+
+  ${BotaoAdicionar} {
+    max-width: 340px;
+    width: 100%;
+    padding: 4px 16px;
+  }
 `
 
 export const RedesSociais = styled.ul`

@@ -1,7 +1,10 @@
+import { useDispatch } from 'react-redux'
+
 import * as S from './styles'
 import { BotaoAdicionar } from '../../Styles'
 import Close from '../../assets/close.svg'
 import { Cardapio } from '../../Pages/Home'
+import { add } from '../../store/reducers/CartSlice'
 
 type Props = {
   Closer: () => void
@@ -16,6 +19,7 @@ export const formataPreco = (preco: number) => {
 }
 
 const Modal = ({ Closer, Content }: Props) => {
+  const dispatch = useDispatch()
   return (
     <S.ModalContainer>
       <div style={{ position: 'relative' }}>
@@ -41,7 +45,7 @@ const Modal = ({ Closer, Content }: Props) => {
               <br />
               {Content.porcao}
             </p>
-            <BotaoAdicionar>
+            <BotaoAdicionar onClick={() => dispatch(add(Content))}>
               Adicionar ao carrinho - ${formataPreco(Content.preco)}
             </BotaoAdicionar>
           </div>
