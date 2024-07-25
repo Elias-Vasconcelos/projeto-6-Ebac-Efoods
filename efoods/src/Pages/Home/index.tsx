@@ -1,7 +1,7 @@
 import Footer from '../../components/Footer'
 import Hero from '../../components/Hero'
 import ListaDeRestaurantes from '../../components/ListaDeRestaurantes'
-import { useEffect, useState } from 'react'
+import { useGetRestautentQuery } from '../../services/api'
 
 export interface Cardapio {
   foto: string
@@ -24,18 +24,16 @@ export type TipoApi = {
 }
 
 const Home = () => {
-  const [Api, SetApi] = useState<TipoApi[]>([])
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => SetApi(res))
-  }, [])
-  return (
-    <>
-      <Hero />
-      <ListaDeRestaurantes restaurantes={Api} />
-      <Footer />
-    </>
-  )
+  const { data: Api } = useGetRestautentQuery()
+  if (Api) {
+    return (
+      <>
+        <Hero />
+        <ListaDeRestaurantes restaurantes={Api} />
+        <Footer />
+      </>
+    )
+  }
+  return <div>Carregando...</div>
 }
 export default Home
