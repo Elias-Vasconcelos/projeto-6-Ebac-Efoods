@@ -7,7 +7,6 @@ export const CartContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: flex-end;
   z-index: 1;
@@ -17,6 +16,7 @@ export const CartContent = styled.div`
   height: 100%;
   background-color: ${cores.Rosa};
   font-size: 14px;
+  z-index: 1;
 
   ${BotaoAdicionar} {
     max-width: 340px;

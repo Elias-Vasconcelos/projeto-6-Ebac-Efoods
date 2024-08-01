@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
-import { BotaoAdicionar } from '../../Styles'
+import { BotaoAdicionar, Overlay } from '../../Styles'
 import Close from '../../assets/close.svg'
 import { Cardapio } from '../../Pages/Home'
 import { add } from '../../store/reducers/CartSlice'
@@ -22,6 +22,7 @@ const Modal = ({ Closer, Content }: Props) => {
   const dispatch = useDispatch()
   return (
     <S.ModalContainer>
+      <Overlay />
       <div style={{ position: 'relative' }}>
         <div
           style={{

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import * as S from './styles'
-import { BotaoAdicionar } from '../../Styles'
+import { BotaoAdicionar, Overlay } from '../../Styles'
 import Lixeira from '../../assets/lixeira.jpg'
 
 import { RootReducer } from '../../store'
@@ -20,6 +20,7 @@ const Cart = () => {
 
   return (
     <S.CartContainer>
+      <Overlay />
       <S.CartContent>
         <S.cardList>
           {Carrinho.map((Item) => (
