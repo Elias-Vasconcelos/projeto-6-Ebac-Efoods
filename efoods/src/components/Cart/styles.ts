@@ -12,11 +12,14 @@ export const CartContainer = styled.div`
   z-index: 1;
 `
 export const CartContent = styled.div`
-  width: 360px;
+  width: 80%;
   height: 100%;
   background-color: ${cores.Rosa};
   font-size: 14px;
   z-index: 1;
+  margin: 0 auto;
+  padding-top: 32px;
+
 
   ${BotaoAdicionar} {
     max-width: 340px;
