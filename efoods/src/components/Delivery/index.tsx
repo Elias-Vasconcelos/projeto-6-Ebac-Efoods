@@ -1,8 +1,8 @@
-import { SetForm, SetGrup } from "./styles"
-import { BotaoAdicionar } from '../../Styles'
+import { SetGrup } from "./styles"
+import { BotaoAdicionar, SetForm } from '../../Styles'
 
 const Delivery = () => (
-<>
+<form>
     <SetForm>
         <label htmlFor="receive"> Quem ira receber </label>
         <input required type="text" id="receive" />
@@ -33,7 +33,7 @@ const Delivery = () => (
         <BotaoAdicionar> Continuar com o pagamento </BotaoAdicionar>
         <BotaoAdicionar styleTop={{ marginTop: 8 }} > Voltar para o carrinho </BotaoAdicionar>
     </div>
-</>
+</form>
 )
 
 export default Delivery

@@ -7,6 +7,16 @@ export const cores = {
   Branco: '#fff'
 }
 
+export const SetForm = styled.div`
+  font-size: 14px;
+  color: ${cores.CorFooter};
+
+  input {
+    width: 100%;
+    background-color: ${cores.CorFooter};
+  }
+`
+
 export const Overlay = styled.div`
   position: absolute;
   top: 0;
