@@ -41,3 +41,4 @@ export const EstiloGlobal = createGlobalStyle`
     background-color:${cores.CorFundo};
     }
 `
+
