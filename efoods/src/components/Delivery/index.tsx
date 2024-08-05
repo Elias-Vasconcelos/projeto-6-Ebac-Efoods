@@ -12,9 +12,19 @@ const Delivery = () => {
         Cidade: '',
         CEP: '',
         Numero: ''
-
-
-    }
+    },
+    validationSchema: Yup.object({
+        receive: Yup.string().min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo obrigatorio'),
+        Endereco: Yup.string().min(5, 'O Endereco precisa ter pelo menos 10 caracteres')
+        .required('O campo obrigatorio'),
+        Cidade: Yup.string().min(5, 'A cidade precisa ter pelo menos 5 caracteres')
+        .required('O campo obrigatorio'),
+        CEP: Yup.string().min(9, 'O cep precisa ter pelo menos 8 caracteres').max(9, 'O cep precisa ter pelo menos 8 caracteres')
+        .required('O campo obrigatorio'),
+        Numero: Yup.string().min(2, 'O Numero precisa ter pelo menos 2 caracteres')
+        .required('O campo obrigatorio')
+    })
  })
     return (
         <form>
