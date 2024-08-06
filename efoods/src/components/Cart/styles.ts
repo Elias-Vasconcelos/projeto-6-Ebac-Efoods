@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import { cores, BotaoAdicionar } from '../../Styles'
 
+type GrupProps = {
+  col1: string,
+  col2: string
+}
+
 type Props = {
   show: boolean
 }
@@ -20,6 +25,11 @@ export const CartContainer = styled.div`
     width: 320px;
     padding: 4px 16px;
   }
+`
+export const SetGrup = styled.div<Props>`
+  display: grid;
+  grid-template-columns: ${({ col1, col2 }) => `repeat(2, ${col1} ${col2})`};
+  justify-content: space-between;
 `
 
 export const SetrContent = styled.div<Props>`
