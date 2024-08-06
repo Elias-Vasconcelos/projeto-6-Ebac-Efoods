@@ -31,12 +31,12 @@ const Cart = () => {
       Endereco: '',
       Cidade: '',
       CEP: '',
-      Numero: '',
+      // Numero: '',
       NameCard: '',
       NumberCard: '',
-      CVV: '',
-      Expiration: '',
-      ExpirationYear: '',
+      // CVV: '',
+      // Expiration: '',
+      // ExpirationYear: '',
     },
     validationSchema: Yup.object({
       receive: Yup.string()
@@ -74,7 +74,37 @@ const Cart = () => {
           )
     }),
     onSubmit: (values) => {
-      console.log(values)
+      // console.log(values)
+      purchase: ({
+          products: [
+                {
+                  "id": 1,
+                  "price": 0
+                }
+              ],
+          delivery: {
+            receiver: values.receive,
+            address: {
+              description: values.Endereco,
+              city: values.Cidade,
+              zipCode: values.CEP,
+              // number:  values.Numero,
+              // complement?: -----(Complemeto)
+            } 
+          },
+          payment: {
+            card: {
+              name: values.NameCard,
+              number: values.NumberCard,
+              // code: CVV,
+              expires: {
+              number: values.NumberCard,
+                // month:  values.Expiration,
+                // year: values.ExpirationYear
+              }
+            }
+          }
+      })
     }
   })
 
