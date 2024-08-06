@@ -22,7 +22,7 @@ const Modal = ({ Closer, Content }: Props) => {
   const dispatch = useDispatch()
   return (
     <S.ModalContainer>
-      <Overlay />
+      <Overlay onClick={() => Closer()} />
       <div style={{ position: 'relative' }}>
         <div
           style={{

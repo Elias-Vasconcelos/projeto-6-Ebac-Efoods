@@ -11,9 +11,16 @@ export const SetForm = styled.div`
   font-size: 14px;
   color: ${cores.CorFooter};
 
+  label {
+    marginb-bottom: 8px;
+  }
+
   input {
     width: 100%;
     background-color: ${cores.CorFooter};
+    padding: 8px;
+    border: 1px solid ${cores.CorFooter};
+    margin: 8px 0;
   }
 `
 
@@ -35,6 +42,7 @@ export const BotaoAdicionar = styled.span`
   text-align: center;
   display: inline-block;
   font-weight: bold;
+  cursor: pointer;
 `
 
 export const EstiloGlobal = createGlobalStyle`
@@ -51,4 +59,3 @@ export const EstiloGlobal = createGlobalStyle`
     background-color:${cores.CorFundo};
     }
 `
-

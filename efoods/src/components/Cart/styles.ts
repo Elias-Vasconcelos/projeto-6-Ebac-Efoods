@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { cores, BotaoAdicionar } from '../../Styles'
 
+type Props = {
+  show: boolean
+}
+
 export const CartContainer = styled.div`
   position: fixed;
   top: 0;
@@ -10,41 +14,55 @@ export const CartContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   z-index: 1;
-`
-export const CartContent = styled.div`
-  width: 80%;
-  height: 100%;
-  background-color: ${cores.Rosa};
-  font-size: 14px;
-  z-index: 1;
-  margin: 0 auto;
-  padding-top: 32px;
-
 
   ${BotaoAdicionar} {
-    max-width: 340px;
-    width: 100%;
+    display: inline-block;
+    width: 320px;
     padding: 4px 16px;
   }
 `
 
+export const SetrContent = styled.div<Props>`
+  display: ${(Props) => (Props.show === true ? 'block' : 'none')};
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 8px;
+  padding-right: 16px;
+`
+
+export const CartContent = styled.div`
+  height: 100%;
+  background-color: ${cores.Rosa};
+  font-size: 14px;
+  z-index: 1;
+  padding-top: 8px;
+  width: 360px;
+  color: ${cores.CorFooter};
+  position: relative;
+`
+
 export const cardList = styled.ul`
   margin: 24px 0;
+  width: 95%;
 `
 
 export const card = styled.li`
-  margin: 0 8px 16px 8px;
+  height: 100px;
   width: 100%;
   background-color: ${cores.CorFooter};
   color: ${cores.Rosa};
   display: flex;
+  align-items: center;
   position: relative;
+  margin: 8px;
 
   > img {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    margin-right: 8px;
+    margin: 0 8px;
   }
 
   h3 {
@@ -64,7 +82,7 @@ export const card = styled.li`
 `
 export const Total = styled.div`
   margin: 8px;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   font-weight: bold;

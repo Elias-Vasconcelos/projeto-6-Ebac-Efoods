@@ -20,8 +20,7 @@ const CartSlice = createSlice({
       )
       if (ProdutoJaAdicionado) {
         alert('Este Item ja foi adicionado ao seu carrinho')
-      }
-      state.Carrinho.push(action.payload)
+      } else state.Carrinho.push(action.payload)
     },
     remove: (state, action: PayloadAction<Cardapio>) => {
       state.Carrinho = [
@@ -32,9 +31,12 @@ const CartSlice = createSlice({
     },
     open: (state) => {
       state.View = true
+    },
+    close: (state) => {
+      state.View = false
     }
   }
 })
 
-export const { add, remove, open } = CartSlice.actions
+export const { add, remove, open, close } = CartSlice.actions
 export default CartSlice.reducer
