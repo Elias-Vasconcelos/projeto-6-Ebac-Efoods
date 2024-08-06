@@ -151,7 +151,7 @@ const Cart = () => {
               id="Cidade"
             />
           </SetForm>
-          <S.SetGrup>
+          <S.SetGrup col1={'45%'} col2={'45%'} > 
             <SetForm>
               <label htmlFor="CEP"> CEP </label>
               <input
@@ -196,7 +196,7 @@ const Cart = () => {
               <label htmlFor="NameCard"> Nome no cartao </label>
               <input  name="NameCard" value={formulario.values.NameCard} onChange={formulario.handleChange} onBlur={formulario.handleBlur} required type="text" id="NameCard" />
             </SetForm>
-            <S.SetGrup>
+            <S.SetGrup col1={'65%'} col2={'30%'} >
               <SetForm>
                 <label htmlFor="NumberCard"> Numero do cartao </label>
                 <input  name="NumberCard" value={formulario.values.NumberCard} onChange={formulario.handleChange} onBlur={formulario.handleBlur} required type="text" id="NumberCard" />
@@ -206,7 +206,7 @@ const Cart = () => {
                 <input  name="CVV" value={formulario.values.CVV} onChange={formulario.handleChange} onBlur={formulario.handleBlur} required type="text" id="CVV" />
               </SetForm>
             </S.SetGrup>
-            <S.SetGrup>
+            <S.SetGrup col1={'45%'} col2={'45%'} >
               <SetForm>
                 <label htmlFor="Expiration"> Mes de vencimento </label>
                 <input  name="Expiration" value={formulario.values.Expiration} onChange={formulario.handleChange} onBlur={formulario.handleBlur} required type="text" id="Expiration" />
