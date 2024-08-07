@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect ,useState } from 'react'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 
@@ -24,7 +24,7 @@ const Cart = () => {
     }, 0)
   }
   const [Payment, setPayment] = useState(enums.SetPayment.Order)
-  const [purchese] = usePurcheseMutation()
+  const [purchese , { data, isSuccess } ] = usePurcheseMutation()
 
   const formulario = useFormik({
     initialValues: {
@@ -142,11 +142,17 @@ const Cart = () => {
       checkCEP ||
       checkNumber
 
-    if ( values.receive.lenght <= 0 || DeliveryForm === true) {
+    if ( values.receive.length <= 0 || DeliveryForm === true) {
       return alert('Por favor verifique os caompos')
     }
     return setPayment(enums.SetPayment.Paymnet)
   }
+
+  useEffect( () => {
+    if(isSuccess && data ) {
+      setPayment(enums.SetPayment.information)
+    }
+  }, [isSuccess, data ] ) 
 
   return (
     <S.CartContainer>
@@ -339,6 +345,7 @@ const Cart = () => {
             </S.SetGrup>
             <div>
               <BotaoAdicionar
+                type='submit'
                 onClick={formulario.handleSubmit}
               >
                 Continuar com o pagamento
@@ -350,14 +357,16 @@ const Cart = () => {
           </form>
         </S.SetrContent   >
 
-        <S.SetrContent show={Payment === enums.SetPayment.information} >
-        <S.DescriptionRequest  >
-          Estamos felizes em informar que seu pedido ja esta em processo de preparacao e, em breve, sera entregue no endereco fornecido.
-        </S.DescriptionRequest>
-        <S.DescriptionRequest>Gostariamos de ressaltar que nossos entregadores nao estao autorizados a realizar cobrancas extras. </S.DescriptionRequest>
-        <S.DescriptionRequest> Lembre-se da importancia de higienizar as maos apos o recebimento do pedido, garantindo assim sua seguraca e bem-estar durante a refeicao. </S.DescriptionRequest>
-        <S.DescriptionRequest> Esperamos que desfrute de uma deliciosa e agradavel experiencia gastronomica. Bom apetite! </S.DescriptionRequest>
+        <S.SetrContent show={Payment === enums.SetPayment.Paymnet} >
+        <S.FormTitle> Pedido realizado - {'?'} </S.FormTitle>
+            <S.DescriptionRequest  >
+              Estamos felizes em informar que seu pedido ja esta em processo de preparacao e, em breve, sera entregue no endereco fornecido.
+            </S.DescriptionRequest>
+            <S.DescriptionRequest>Gostariamos de ressaltar que nossos entregadores nao estao autorizados a realizar cobrancas extras. </S.DescriptionRequest>
+            <S.DescriptionRequest> Lembre-se da importancia de higienizar as maos apos o recebimento do pedido, garantindo assim sua seguraca e bem-estar durante a refeicao. </S.DescriptionRequest>
+            <S.DescriptionRequest> Esperamos que desfrute de uma deliciosa e agradavel experiencia gastronomica. Bom apetite! </S.DescriptionRequest>
         </S.SetrContent>
+
       </S.CartContent>
     </S.CartContainer>
   )
