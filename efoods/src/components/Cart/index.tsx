@@ -357,7 +357,7 @@ const Cart = () => {
           </form>
         </S.SetrContent   >
 
-        <S.SetrContent show={Payment === enums.SetPayment.Paymnet} >
+        <S.SetrContent show={Payment === enums.SetPayment.information} >
         <S.FormTitle> Pedido realizado - {'?'} </S.FormTitle>
             <S.DescriptionRequest  >
               Estamos felizes em informar que seu pedido ja esta em processo de preparacao e, em breve, sera entregue no endereco fornecido.
