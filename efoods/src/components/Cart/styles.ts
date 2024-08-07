@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { cores, BotaoAdicionar } from '../../Styles'
 
 type GrupProps = {
-  col1: string,
+  col1: string
   col2: string
 }
 
@@ -26,9 +26,9 @@ export const CartContainer = styled.div`
     padding: 4px 16px;
   }
 `
-export const SetGrup = styled.div<Props>`
+export const SetGrup = styled.div<GrupProps>`
   display: grid;
-  grid-template-columns: ${({ col1, col2 }) => `repeat(2, ${col1} ${col2})`};
+  grid-template-columns: ${({ col1, col2 }) => `repeat(1, ${col1} ${col2})`};
   justify-content: space-between;
 `
 

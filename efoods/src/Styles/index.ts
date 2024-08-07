@@ -1,13 +1,18 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
+type Props = {
+  valid: boolean
+}
+
 export const cores = {
   Rosa: '#E66767',
   CorFundo: '#FFF8F2',
   CorFooter: '#FFEBD9',
-  Branco: '#fff'
+  Branco: '#fff',
+  Red: '#FF1A1A'
 }
 
-export const SetForm = styled.div`
+export const SetForm = styled.div<Props>`
   font-size: 14px;
   color: ${cores.CorFooter};
 
@@ -19,7 +24,7 @@ export const SetForm = styled.div`
     width: 100%;
     background-color: ${cores.CorFooter};
     padding: 8px;
-    border: 1px solid ${cores.CorFooter};
+    border: 4px solid ${(Props) => (Props.valid ? cores.Red : cores.CorFooter)};
     margin: 8px 0;
   }
 `
@@ -34,7 +39,7 @@ export const Overlay = styled.div`
   opacity: 0.7;
 `
 
-export const BotaoAdicionar = styled.span`
+export const BotaoAdicionar = styled.button`
   width: 94%;
   margin: 3%;
   color: ${cores.Rosa};
@@ -43,6 +48,8 @@ export const BotaoAdicionar = styled.span`
   display: inline-block;
   font-weight: bold;
   cursor: pointer;
+  border: none;
+  padding: 4px;
 `
 
 export const EstiloGlobal = createGlobalStyle`
@@ -57,5 +64,6 @@ export const EstiloGlobal = createGlobalStyle`
 }
   body {
     background-color:${cores.CorFundo};
+      height: 100%;
     }
 `

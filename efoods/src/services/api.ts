@@ -1,5 +1,36 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { TipoApi } from '../Pages/Home'
+
+type product = {
+  id: 1
+  price: 0
+}
+
+type checkout = {
+  products: product[]
+  delivery: {
+    receiver: string
+    address: {
+      description: string
+      city: string
+      zipCode: string
+      number: number
+      complement?: string
+    }
+  }
+  payment: {
+    card: {
+      name: string
+      number: string
+      code: number
+      expires: {
+        month: number
+        year: number
+      }
+    }
+  }
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -11,10 +42,21 @@ const api = createApi({
     }),
     GetCardapio: builder.query<TipoApi, string>({
       query: (id) => `restaurantes/${id}`
+    }),
+    purchese: builder.mutation<any, checkout>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
 
-export const { useGetRestautentQuery, useGetCardapioQuery } = api
+export const {
+  useGetRestautentQuery,
+  useGetCardapioQuery,
+  usePurcheseMutation
+} = api
 
 export default api
