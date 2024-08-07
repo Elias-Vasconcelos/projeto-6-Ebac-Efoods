@@ -28,9 +28,9 @@ export const CartContainer = styled.div`
 `
 
 export const FormTitle = styled.h3`
-  font-size: 12px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin: 16px 0;
   color: ${cores.CorFooter};
 `
 

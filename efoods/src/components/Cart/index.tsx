@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect ,useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
+import ImputMask from 'react-input-mask'
 
 import * as enums from '../../utis/enums/index'
 import { RootReducer } from '../../store'
-import { remove, close } from '../../store/reducers/CartSlice'
+import { remove, close, clean } from '../../store/reducers/CartSlice'
 import { formataPreco } from '../Modal'
 import { usePurcheseMutation } from '../../services/api'
 
 import * as S from './styles'
 import { BotaoAdicionar, Overlay, SetForm } from '../../Styles'
 import Lixeira from '../../assets/lixeira.jpg'
-
 
 const Cart = () => {
   const { Carrinho } = useSelector((state: RootReducer) => state.Carrinho)
@@ -24,7 +24,7 @@ const Cart = () => {
     }, 0)
   }
   const [Payment, setPayment] = useState(enums.SetPayment.Order)
-  const [purchese , { data, isSuccess } ] = usePurcheseMutation()
+  const [purchese, { data, isSuccess }] = usePurcheseMutation()
 
   const formulario = useFormik({
     initialValues: {
@@ -45,7 +45,7 @@ const Cart = () => {
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo obrigatorio'),
       DeliveryAddress: Yup.string()
-        .min(5, 'O DeliveryAddress precisa ter pelo menos 10 caracteres')
+        .min(5, 'O DeliveryAddress precisa ter pelo menos 5 caracteres')
         .required('O campo obrigatorio'),
       City: Yup.string()
         .min(5, 'A City precisa ter pelo menos 5 caracteres')
@@ -89,12 +89,10 @@ const Cart = () => {
     }),
     onSubmit: (values) => {
       purchese({
-        products: [
-          {
-            id: 1,
-            price: 0
-          }
-        ],
+        products: Carrinho.map((item) => ({
+          id: item.id,
+          price: Number(formataPreco(item.preco))
+        })),
         delivery: {
           receiver: values.receive,
           address: {
@@ -142,53 +140,66 @@ const Cart = () => {
       checkCEP ||
       checkNumber
 
-    if ( values.receive.length <= 0 || DeliveryForm === true) {
+    if (formulario.values.receive.length <= 0 || DeliveryForm === true) {
       return alert('Por favor verifique os caompos')
     }
     return setPayment(enums.SetPayment.Paymnet)
   }
 
-  useEffect( () => {
-    if(isSuccess && data ) {
+  useEffect(() => {
+    if (isSuccess && data) {
       setPayment(enums.SetPayment.information)
+      dispatch(clean())
     }
-  }, [isSuccess, data ] ) 
+  }, [isSuccess, data, dispatch])
 
   return (
     <S.CartContainer>
       <Overlay onClick={() => dispatch(close())} />
       <S.CartContent>
         <S.SetrContent show={Payment === enums.SetPayment.Order}>
-          <S.cardList>
-            {Carrinho.map((Item) => (
-              <S.card key={Item.id}>
-                <img src={Item.foto} alt="" />
-                <div>
-                  <h3> {Item.nome} </h3>
-                  <p> {formataPreco(Item.preco)} </p>
-                </div>
-                <span>
-                  <img
-                    src={Lixeira}
-                    alt="Lixeira"
-                    onClick={() => dispatch(remove(Item))}
-                  />
-                </span>
-              </S.card>
-            ))}
-          </S.cardList>
-          <S.Total>
-            <p>Valor total</p>
-            <p> {formataPreco(getTotalPrice())} </p>
-          </S.Total>
-          <BotaoAdicionar onClick={() => setPayment(enums.SetPayment.Delivery)}>
-            Continuar com a entrega
-          </BotaoAdicionar>
+          {Carrinho.length > 0 ? (
+            <>
+              <S.cardList>
+                {Carrinho.map((Item) => (
+                  <S.card key={Item.id}>
+                    <img src={Item.foto} alt="" />
+                    <div>
+                      <h3> {Item.nome} </h3>
+                      <p> {formataPreco(Item.preco)} </p>
+                    </div>
+                    <span>
+                      <img
+                        src={Lixeira}
+                        alt="Lixeira"
+                        onClick={() => dispatch(remove(Item))}
+                      />
+                    </span>
+                  </S.card>
+                ))}
+              </S.cardList>
+              <S.Total>
+                <p>Valor total</p>
+                <p> {formataPreco(getTotalPrice())} </p>
+              </S.Total>
+              <BotaoAdicionar
+                onClick={() => setPayment(enums.SetPayment.Delivery)}
+              >
+                Continuar com a entrega
+              </BotaoAdicionar>
+            </>
+          ) : (
+            <div>
+              <S.FormTitle>Seu carrinho está vazio!</S.FormTitle>
+              <br />
+              <p>Parece que você ainda não escolheu seus pratos favoritos</p>
+            </div>
+          )}
         </S.SetrContent>
 
         <S.SetrContent show={Payment === enums.SetPayment.Delivery}>
-          <form>
-          <S.FormTitle> Entrega </S.FormTitle>
+          <form onSubmit={formulario.handleSubmit}>
+            <S.FormTitle> Entrega </S.FormTitle>
             <SetForm valid={checkouthaserror('receive')}>
               <label htmlFor="receive"> Quem ira receber </label>
               <input
@@ -228,7 +239,7 @@ const Cart = () => {
             <S.SetGrup col1={'45%'} col2={'45%'}>
               <SetForm valid={checkouthaserror('CEP')}>
                 <label htmlFor="CEP"> CEP </label>
-                <input
+                <ImputMask
                   name="CEP"
                   value={formulario.values.CEP}
                   onChange={formulario.handleChange}
@@ -236,6 +247,7 @@ const Cart = () => {
                   required
                   type="text"
                   id="CEP"
+                  mask="99999-999"
                 />
               </SetForm>
               <SetForm valid={checkouthaserror('Number')}>
@@ -277,8 +289,10 @@ const Cart = () => {
         </S.SetrContent>
 
         <S.SetrContent show={Payment === enums.SetPayment.Paymnet}>
-          <form>
-          <S.FormTitle> Pagamento - Valor a pagar {formataPreco(getTotalPrice())} </S.FormTitle>
+          <form onSubmit={formulario.handleSubmit}>
+            <S.FormTitle>
+              Pagamento - Valor a pagar {formataPreco(getTotalPrice())}{' '}
+            </S.FormTitle>
             <SetForm valid={checkouthaserror('NameCard')}>
               <label htmlFor="NameCard"> Nome no cartao </label>
               <input
@@ -294,7 +308,7 @@ const Cart = () => {
             <S.SetGrup col1={'65%'} col2={'30%'}>
               <SetForm valid={checkouthaserror('NumberCard')}>
                 <label htmlFor="NumberCard"> Numero do cartao </label>
-                <input
+                <ImputMask
                   name="NumberCard"
                   value={formulario.values.NumberCard}
                   onChange={formulario.handleChange}
@@ -302,11 +316,12 @@ const Cart = () => {
                   required
                   type="text"
                   id="NumberCard"
+                  mask="9999 9999 9999 9999"
                 />
               </SetForm>
               <SetForm valid={checkouthaserror('CVV')}>
                 <label htmlFor="CVV"> CVV </label>
-                <input
+                <ImputMask
                   name="CVV"
                   value={formulario.values.CVV}
                   onChange={formulario.handleChange}
@@ -314,13 +329,14 @@ const Cart = () => {
                   required
                   type="text"
                   id="CVV"
+                  mask="999"
                 />
               </SetForm>
             </S.SetGrup>
             <S.SetGrup col1={'45%'} col2={'45%'}>
               <SetForm valid={checkouthaserror('Expiration')}>
                 <label htmlFor="Expiration"> Mes de vencimento </label>
-                <input
+                <ImputMask
                   name="Expiration"
                   value={formulario.values.Expiration}
                   onChange={formulario.handleChange}
@@ -328,11 +344,12 @@ const Cart = () => {
                   required
                   type="text"
                   id="Expiration"
+                  mask="99"
                 />
               </SetForm>
               <SetForm valid={checkouthaserror('ExpirationYear')}>
                 <label htmlFor="ExpirationYear"> Ano de vencimento </label>
-                <input
+                <ImputMask
                   name="ExpirationYear"
                   value={formulario.values.ExpirationYear}
                   onChange={formulario.handleChange}
@@ -340,33 +357,46 @@ const Cart = () => {
                   required
                   type="text"
                   id="ExpirationYear"
+                  mask="9999"
                 />
               </SetForm>
             </S.SetGrup>
             <div>
               <BotaoAdicionar
-                type='submit'
-                onClick={formulario.handleSubmit}
+                type="submit"
+                onClick={() => formulario.handleSubmit}
               >
                 Continuar com o pagamento
               </BotaoAdicionar>
-              <BotaoAdicionar style={{ marginTop: 8 }}>
+              <BotaoAdicionar type="button" style={{ marginTop: 8 }}>
                 Voltar para a edicao de endereco
               </BotaoAdicionar>
             </div>
           </form>
-        </S.SetrContent   >
-
-        <S.SetrContent show={Payment === enums.SetPayment.information} >
-        <S.FormTitle> Pedido realizado - {'?'} </S.FormTitle>
-            <S.DescriptionRequest  >
-              Estamos felizes em informar que seu pedido ja esta em processo de preparacao e, em breve, sera entregue no endereco fornecido.
-            </S.DescriptionRequest>
-            <S.DescriptionRequest>Gostariamos de ressaltar que nossos entregadores nao estao autorizados a realizar cobrancas extras. </S.DescriptionRequest>
-            <S.DescriptionRequest> Lembre-se da importancia de higienizar as maos apos o recebimento do pedido, garantindo assim sua seguraca e bem-estar durante a refeicao. </S.DescriptionRequest>
-            <S.DescriptionRequest> Esperamos que desfrute de uma deliciosa e agradavel experiencia gastronomica. Bom apetite! </S.DescriptionRequest>
         </S.SetrContent>
 
+        {data && (
+          <S.SetrContent show={Payment === enums.SetPayment.information}>
+            <S.FormTitle> Pedido realizado - {data.orderId} </S.FormTitle>
+            <S.DescriptionRequest>
+              Estamos felizes em informar que seu pedido ja esta em processo de
+              preparacao e, em breve, sera entregue no endereco fornecido.
+            </S.DescriptionRequest>
+            <S.DescriptionRequest>
+              Gostariamos de ressaltar que nossos entregadores nao estao
+              autorizados a realizar cobrancas extras.
+            </S.DescriptionRequest>
+            <S.DescriptionRequest>
+              Lembre-se da importancia de higienizar as maos apos o recebimento
+              do pedido, garantindo assim sua seguraca e bem-estar durante a
+              refeicao.
+            </S.DescriptionRequest>
+            <S.DescriptionRequest>
+              Esperamos que desfrute de uma deliciosa e agradavel experiencia
+              gastronomica. Bom apetite!
+            </S.DescriptionRequest>
+          </S.SetrContent>
+        )}
       </S.CartContent>
     </S.CartContainer>
   )

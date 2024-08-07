@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { TipoApi } from '../Pages/Home'
 
 type product = {
-  id: 1
-  price: 0
+  id: number
+  price: number
 }
 
 type checkout = {
