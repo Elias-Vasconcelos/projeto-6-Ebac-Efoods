@@ -348,10 +348,15 @@ const Cart = () => {
               </BotaoAdicionar>
             </div>
           </form>
-        </S.SetrContent>
+        </S.SetrContent   >
 
-        <S.SetrContent>
-
+        <S.SetrContent show={Payment === enums.SetPayment.information} >
+        <S.DescriptionRequest  >
+          Estamos felizes em informar que seu pedido ja esta em processo de preparacao e, em breve, sera entregue no endereco fornecido.
+        </S.DescriptionRequest>
+        <S.DescriptionRequest>Gostariamos de ressaltar que nossos entregadores nao estao autorizados a realizar cobrancas extras. </S.DescriptionRequest>
+        <S.DescriptionRequest> Lembre-se da importancia de higienizar as maos apos o recebimento do pedido, garantindo assim sua seguraca e bem-estar durante a refeicao. </S.DescriptionRequest>
+        <S.DescriptionRequest> Esperamos que desfrute de uma deliciosa e agradavel experiencia gastronomica. Bom apetite! </S.DescriptionRequest>
         </S.SetrContent>
       </S.CartContent>
     </S.CartContainer>

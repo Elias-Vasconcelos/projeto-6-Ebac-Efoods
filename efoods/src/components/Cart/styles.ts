@@ -28,10 +28,17 @@ export const CartContainer = styled.div`
 `
 
 export const FormTitle = styled.h3`
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   margin-bottom: 16px;
   color: ${cores.CorFooter};
+`
+
+export const DescriptionRequest = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 16px;
 `
 
 export const SetGrup = styled.div<GrupProps>`
