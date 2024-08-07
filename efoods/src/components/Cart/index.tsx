@@ -3,15 +3,16 @@ import { useState } from 'react'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 
-import * as S from './styles'
-import { BotaoAdicionar, Overlay, SetForm } from '../../Styles'
-import Lixeira from '../../assets/lixeira.jpg'
 import * as enums from '../../utis/enums/index'
-
 import { RootReducer } from '../../store'
 import { remove, close } from '../../store/reducers/CartSlice'
 import { formataPreco } from '../Modal'
 import { usePurcheseMutation } from '../../services/api'
+
+import * as S from './styles'
+import { BotaoAdicionar, Overlay, SetForm } from '../../Styles'
+import Lixeira from '../../assets/lixeira.jpg'
+
 
 const Cart = () => {
   const { Carrinho } = useSelector((state: RootReducer) => state.Carrinho)
@@ -141,7 +142,7 @@ const Cart = () => {
       checkCEP ||
       checkNumber
 
-    if (DeliveryForm === true) {
+    if ( values.receive.lenght <= 0 || DeliveryForm === true) {
       return alert('Por favor verifique os caompos')
     }
     return setPayment(enums.SetPayment.Paymnet)
@@ -181,6 +182,7 @@ const Cart = () => {
 
         <S.SetrContent show={Payment === enums.SetPayment.Delivery}>
           <form>
+          <S.FormTitle> Entrega </S.FormTitle>
             <SetForm valid={checkouthaserror('receive')}>
               <label htmlFor="receive"> Quem ira receber </label>
               <input
@@ -270,6 +272,7 @@ const Cart = () => {
 
         <S.SetrContent show={Payment === enums.SetPayment.Paymnet}>
           <form>
+          <S.FormTitle> Pagamento - Valor a pagar {formataPreco(getTotalPrice())} </S.FormTitle>
             <SetForm valid={checkouthaserror('NameCard')}>
               <label htmlFor="NameCard"> Nome no cartao </label>
               <input
@@ -336,7 +339,7 @@ const Cart = () => {
             </S.SetGrup>
             <div>
               <BotaoAdicionar
-                onClick={() => setPayment(enums.SetPayment.Delivery)}
+                onClick={formulario.handleSubmit}
               >
                 Continuar com o pagamento
               </BotaoAdicionar>
@@ -345,6 +348,10 @@ const Cart = () => {
               </BotaoAdicionar>
             </div>
           </form>
+        </S.SetrContent>
+
+        <S.SetrContent>
+
         </S.SetrContent>
       </S.CartContent>
     </S.CartContainer>

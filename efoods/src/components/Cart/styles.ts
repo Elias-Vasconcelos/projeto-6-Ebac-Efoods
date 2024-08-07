@@ -26,6 +26,14 @@ export const CartContainer = styled.div`
     padding: 4px 16px;
   }
 `
+
+export const FormTitle = styled.h3`
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: ${cores.CorFooter};
+`
+
 export const SetGrup = styled.div<GrupProps>`
   display: grid;
   grid-template-columns: ${({ col1, col2 }) => `repeat(1, ${col1} ${col2})`};
