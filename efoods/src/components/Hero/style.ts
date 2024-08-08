@@ -23,4 +23,8 @@ export const Titulo = styled.h2`
   margin-botton: 40px;
   margin-bottom: 40px;
   text-align: center;
+  
+      @media (max-width: ${breakpoints.desktop}) {
+         max-width: 80%;
+  }
 `
