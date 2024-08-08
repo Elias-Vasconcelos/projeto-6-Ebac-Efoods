@@ -8,4 +8,14 @@ export const ListaContainer = styled.ul`
   grid-template-columns: repeat(3, 320px);
   grid-template-rows: repeat(338px);
   gap: 32px;
+
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 320px 320px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 320px;
+  }
+
 `

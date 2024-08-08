@@ -4,6 +4,11 @@ type Props = {
   valid: boolean
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 export const cores = {
   Rosa: '#E66767',
   CorFundo: '#FFF8F2',
@@ -65,5 +70,9 @@ export const EstiloGlobal = createGlobalStyle`
   body {
     background-color:${cores.CorFundo};
       height: 100%;
+
+      @media (max-width: ${breakpoints.desktop}) {
+         max-width: 80%;
+  }
     }
 `
