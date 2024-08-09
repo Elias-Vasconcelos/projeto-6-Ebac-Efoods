@@ -20,6 +20,17 @@ const Cabecalho = () => {
           {Carrinho.length} produto(s) no carrinho
         </p>
       </S.Content>
+      <S.tabletContent>
+        <S.Links to={'/'}>
+          <img src={Logo} alt="Logo" />
+        </S.Links>
+        <div>
+          <S.Links to={'/'}>Restaurantes</S.Links>
+          <p onClick={() => dispatch(open())}>
+            {Carrinho.length} produto(s) no carrinho
+          </p>
+        </div>
+      </S.tabletContent>
     </S.CabecalhoContainer>
   )
 }

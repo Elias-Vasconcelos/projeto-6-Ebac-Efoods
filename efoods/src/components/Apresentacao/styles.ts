@@ -22,7 +22,7 @@ export const ApresentacaoContainer = styled.div`
 
 export const Content = styled.div`
   max-width: 1024px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

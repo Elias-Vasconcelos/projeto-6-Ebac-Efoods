@@ -6,7 +6,8 @@ type Props = {
 
 export const breakpoints = {
   desktop: '1024px',
-  tablet: '768px'
+  tablet: '768px',
+  smartphone: '430px'
 }
 
 export const cores = {
@@ -69,10 +70,12 @@ export const EstiloGlobal = createGlobalStyle`
 }
   body {
     background-color:${cores.CorFundo};
-      height: 100%;
+    height: 100%;
 
-      @media (max-width: ${breakpoints.desktop}) {
-         max-width: 80%;
+      @media (max-width: ${breakpoints.smartphone}) {
+      max-width: 115vw;
+      width: 110%;
   }
+
     }
 `
