@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { BotaoAdicionar, cores } from '../../Styles'
 
-export const Rodape = styled.footer`
+export const Footer = styled.footer`
   background-color: ${cores.CorFooter};
   margin-top: 120px;
 `
 
-export const RodapeContainer = styled.div`
+export const FooterContainer = styled.div`
   margin: 0 auto;
   color: ${cores.Rosa};
   font-size: 10px;
@@ -35,7 +35,7 @@ export const RodapeContainer = styled.div`
   }
 `
 
-export const RedesSociais = styled.ul`
+export const SocialMedia = styled.ul`
   margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(3, 24px);

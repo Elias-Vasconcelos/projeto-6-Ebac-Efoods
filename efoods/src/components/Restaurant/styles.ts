@@ -7,7 +7,7 @@ export const Card = styled.div`
   position: relative;
   color: ${cores.Rosa};
 `
-export const Imagem = styled.img`
+export const Image = styled.img`
   width: 100%;
   max-height: 217px;
   height: 100%;
@@ -15,17 +15,17 @@ export const Imagem = styled.img`
   margin-bottom: 8px;
   object-fit: cover;
 `
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 18px;
   font-weight: bold;
   margin-left: 8px;
 `
-export const Nota = styled.p`
+export const Score = styled.p`
   font-size: 18px;
   font-weight: bold;
   margin-right: 8px;
 `
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   margin: 8px 16px;

@@ -35,7 +35,7 @@ export const Links = styled(Link)`
   font-size: 18px;
   color: ${cores.Rosa};
 `
-export const CabecalhoContainer = styled.header`
+export const HeaderContainer = styled.header`
   color: ${cores.Rosa};
   font-size: 18px;
   display: flex;

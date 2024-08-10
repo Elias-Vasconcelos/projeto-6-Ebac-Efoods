@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../Styles'
 
-export const PratoCard = styled.div`
+export const DishCard = styled.div`
   background-color: ${cores.Rosa};
   position: relative;
   color: ${cores.CorFooter};

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { breakpoints } from '../../Styles'
 
-export const ListaContainer = styled.ul`
+export const ListContainer = styled.ul`
   margin: 0 auto;
   max-width: 960px;
   width: 100%;

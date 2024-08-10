@@ -7,10 +7,10 @@ import Twitter from '../../assets/twitter.svg'
 
 const Footer = () => {
   return (
-    <S.Rodape>
-      <S.RodapeContainer>
+    <S.Footer>
+      <S.FooterContainer>
         <img src={Logo} alt="Logo" />
-        <S.RedesSociais>
+        <S.SocialMedia>
           <li>
             <a href="#">
               <img src={Instagram} alt="Instagram" />
@@ -26,14 +26,14 @@ const Footer = () => {
               <img src={Twitter} alt="Twitter" />
             </a>
           </li>
-        </S.RedesSociais>
+        </S.SocialMedia>
         <p>
           A efood é uma plataf orma para divulgação de estabelecimentos, a
           responsabilidade pela entrega, qualidade dos produtos é toda do
           estabelecimento contratado.
         </p>
-      </S.RodapeContainer>
-    </S.Rodape>
+      </S.FooterContainer>
+    </S.Footer>
   )
 }
 export default Footer

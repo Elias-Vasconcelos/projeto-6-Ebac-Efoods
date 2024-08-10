@@ -2,27 +2,27 @@ import * as S from './styles'
 import { BotaoAdicionar } from '../../Styles'
 import { useState } from 'react'
 import Modal from '../Modal'
-import { Cardapio } from '../../Pages/Home'
+import { Menu } from '../../Pages/Home'
 
 type Props = {
-  Content: Cardapio
+  Content: Menu
 }
 
-const Prato = ({ Content }: Props) => {
+const Dish = ({ Content }: Props) => {
   const [viewModal, setviewModal] = useState(false)
   const sliceDescription = (descricao: string) => descricao.slice(0, 92) + '...'
   return (
     <>
-      <S.PratoCard>
-        <img src={Content.foto} alt="" />
-        <h4>{Content.nome}</h4>
-        <p>{sliceDescription(Content.descricao)}</p>
+      <S.DishCard>
+        <img src={Content.photo} alt="" />
+        <h4>{Content.name}</h4>
+        <p>{sliceDescription(Content.Menudescription)}</p>
         <br />
-        <p> {Content.porcao} </p>
+        <p> {Content.portion} </p>
         <BotaoAdicionar onClick={() => setviewModal(true)}>
           Adicionar ao carrinho
         </BotaoAdicionar>
-      </S.PratoCard>
+      </S.DishCard>
       {viewModal === true ? (
         <Modal Closer={() => setviewModal(false)} Content={Content} />
       ) : (
@@ -31,4 +31,4 @@ const Prato = ({ Content }: Props) => {
     </>
   )
 }
-export default Prato
+export default Dish

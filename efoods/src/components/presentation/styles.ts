@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { cores } from '../../Styles'
 
-export const ApresentacaoContainer = styled.div`
+export const presentationcaoContainer = styled.div`
     position: relative;
     z-index: 1;
     margin-bottom: 56px;

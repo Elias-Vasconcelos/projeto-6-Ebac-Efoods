@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { TipoApi } from '../Pages/Home'
+import { TypeApi } from '../Pages/Home'
 
 type product = {
   id: number
@@ -37,10 +37,10 @@ const api = createApi({
     baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
   }),
   endpoints: (builder) => ({
-    GetRestautent: builder.query<TipoApi[], void>({
+    GetRestautent: builder.query<TypeApi[], void>({
       query: () => 'restaurantes'
     }),
-    GetCardapio: builder.query<TipoApi, string>({
+    GetCardapio: builder.query<TypeApi, string>({
       query: (id) => `restaurantes/${id}`
     }),
     purchese: builder.mutation<any, checkout>({

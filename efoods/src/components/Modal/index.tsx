@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux'
 import * as S from './styles'
 import { BotaoAdicionar, Overlay } from '../../Styles'
 import Close from '../../assets/close.svg'
-import { Cardapio } from '../../Pages/Home'
+import { Menu } from '../../Pages/Home'
 import { add } from '../../store/reducers/CartSlice'
 
 type Props = {
   Closer: () => void
-  Content: Cardapio
+  Content: Menu
 }
 
 export const formataPreco = (preco: number) => {
@@ -37,17 +37,17 @@ const Modal = ({ Closer, Content }: Props) => {
           </span>
         </div>
         <S.ModalContent>
-          <img src={Content.foto} alt="Pizza" />
+          <img src={Content.photo} alt="Pizza" />
           <div>
-            <h4>{Content.nome}</h4>
+            <h4>{Content.name}</h4>
             <p>
-              {Content.descricao}
+              {Content.Menudescription}
               <br />
               <br />
-              {Content.porcao}
+              {Content.portion}
             </p>
             <BotaoAdicionar onClick={() => dispatch(add(Content))}>
-              Adicionar ao carrinho - ${formataPreco(Content.preco)}
+              Adicionar ao carrinho - ${formataPreco(Content.price)}
             </BotaoAdicionar>
           </div>
         </S.ModalContent>

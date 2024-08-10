@@ -15,18 +15,18 @@ import { BotaoAdicionar, Overlay, SetForm } from '../../Styles'
 import Lixeira from '../../assets/lixeira.jpg'
 
 const Cart = () => {
-  const { Carrinho } = useSelector((state: RootReducer) => state.Carrinho)
+  const { Cart } = useSelector((state: RootReducer) => state.Cart)
   const dispatch = useDispatch()
 
   const getTotalPrice = () => {
-    return Carrinho.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.preco)
+    return Cart.reduce((accumulator, currentvalue) => {
+      return (accumulator += currentvalue.price)
     }, 0)
   }
   const [Payment, setPayment] = useState(enums.SetPayment.Order)
   const [purchese, { data, isSuccess }] = usePurcheseMutation()
 
-  const formulario = useFormik({
+  const form = useFormik({
     initialValues: {
       receive: '',
       DeliveryAddress: '',
@@ -89,9 +89,9 @@ const Cart = () => {
     }),
     onSubmit: (values) => {
       purchese({
-        products: Carrinho.map((item) => ({
+        products: Cart.map((item) => ({
           id: item.id,
-          price: Number(formataPreco(item.preco))
+          price: Number(formataPreco(item.price))
         })),
         delivery: {
           receiver: values.receive,
@@ -119,15 +119,15 @@ const Cart = () => {
   })
 
   const checkouthaserror = (name: string) => {
-    const isToched = name in formulario.touched
-    const isInvalid = name in formulario.errors
+    const isToched = name in form.touched
+    const isInvalid = name in form.errors
     const hasHerror = isToched && isInvalid
 
     return hasHerror
   }
 
   const checkDeliveryForm = () => {
-    const checkreceive = 'receive' in formulario.errors
+    const checkreceive = 'receive' in form.errors
     const checkDeliveryAddress = checkouthaserror('DeliveryAddress')
     const checkCity = checkouthaserror('City')
     const checkCEP = checkouthaserror('CEP')
@@ -140,7 +140,7 @@ const Cart = () => {
       checkCEP ||
       checkNumber
 
-    if (formulario.values.receive.length <= 0 || DeliveryForm === true) {
+    if (form.values.receive.length <= 0 || DeliveryForm === true) {
       return alert('Por favor verifique os caompos')
     }
     return setPayment(enums.SetPayment.Paymnet)
@@ -158,15 +158,15 @@ const Cart = () => {
       <Overlay onClick={() => dispatch(close())} />
       <S.CartContent>
         <S.SetrContent show={Payment === enums.SetPayment.Order}>
-          {Carrinho.length > 0 ? (
+          {Cart.length > 0 ? (
             <>
               <S.cardList>
-                {Carrinho.map((Item) => (
+                {Cart.map((Item) => (
                   <S.card key={Item.id}>
-                    <img src={Item.foto} alt="" />
+                    <img src={Item.photo} alt="" />
                     <div>
-                      <h3> {Item.nome} </h3>
-                      <p> {formataPreco(Item.preco)} </p>
+                      <h3> {Item.name} </h3>
+                      <p> {formataPreco(Item.price)} </p>
                     </div>
                     <span>
                       <img
@@ -198,15 +198,15 @@ const Cart = () => {
         </S.SetrContent>
 
         <S.SetrContent show={Payment === enums.SetPayment.Delivery}>
-          <form onSubmit={formulario.handleSubmit}>
+          <form onSubmit={form.handleSubmit}>
             <S.FormTitle> Entrega </S.FormTitle>
             <SetForm valid={checkouthaserror('receive')}>
               <label htmlFor="receive"> Quem ira receber </label>
               <input
                 name="receive"
-                value={formulario.values.receive}
-                onChange={formulario.handleChange}
-                onBlur={formulario.handleBlur}
+                value={form.values.receive}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 required
                 type="text"
                 id="receive"
@@ -216,9 +216,9 @@ const Cart = () => {
               <label htmlFor="DeliveryAddress"> endereco </label>
               <input
                 name="DeliveryAddress"
-                value={formulario.values.DeliveryAddress}
-                onChange={formulario.handleChange}
-                onBlur={formulario.handleBlur}
+                value={form.values.DeliveryAddress}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 required
                 type="text"
                 id="DeliveryAddress"
@@ -228,9 +228,9 @@ const Cart = () => {
               <label htmlFor="City"> Cidade </label>
               <input
                 name="City"
-                value={formulario.values.City}
-                onChange={formulario.handleChange}
-                onBlur={formulario.handleBlur}
+                value={form.values.City}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 required
                 type="text"
                 id="City"
@@ -241,9 +241,9 @@ const Cart = () => {
                 <label htmlFor="CEP"> CEP </label>
                 <ImputMask
                   name="CEP"
-                  value={formulario.values.CEP}
-                  onChange={formulario.handleChange}
-                  onBlur={formulario.handleBlur}
+                  value={form.values.CEP}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                   required
                   type="text"
                   id="CEP"
@@ -254,9 +254,9 @@ const Cart = () => {
                 <label htmlFor="Number"> Numero </label>
                 <input
                   name="Number"
-                  value={formulario.values.Number}
-                  onChange={formulario.handleChange}
-                  onBlur={formulario.handleBlur}
+                  value={form.values.Number}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                   required
                   type="text"
                   id="Number"
@@ -267,9 +267,9 @@ const Cart = () => {
               <label htmlFor="AddressComplement">Complemento (opcional)</label>
               <input
                 type="text"
-                value={formulario.values.AddressComplement}
-                onChange={formulario.handleChange}
-                onBlur={formulario.handleBlur}
+                value={form.values.AddressComplement}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 id="AddressComplement"
               />
             </SetForm>
@@ -289,7 +289,7 @@ const Cart = () => {
         </S.SetrContent>
 
         <S.SetrContent show={Payment === enums.SetPayment.Paymnet}>
-          <form onSubmit={formulario.handleSubmit}>
+          <form onSubmit={form.handleSubmit}>
             <S.FormTitle>
               Pagamento - Valor a pagar {formataPreco(getTotalPrice())}{' '}
             </S.FormTitle>
@@ -297,9 +297,9 @@ const Cart = () => {
               <label htmlFor="NameCard"> Nome no cartao </label>
               <input
                 name="NameCard"
-                value={formulario.values.NameCard}
-                onChange={formulario.handleChange}
-                onBlur={formulario.handleBlur}
+                value={form.values.NameCard}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 required
                 type="text"
                 id="NameCard"
@@ -310,9 +310,9 @@ const Cart = () => {
                 <label htmlFor="NumberCard"> Numero do cartao </label>
                 <ImputMask
                   name="NumberCard"
-                  value={formulario.values.NumberCard}
-                  onChange={formulario.handleChange}
-                  onBlur={formulario.handleBlur}
+                  value={form.values.NumberCard}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                   required
                   type="text"
                   id="NumberCard"
@@ -323,9 +323,9 @@ const Cart = () => {
                 <label htmlFor="CVV"> CVV </label>
                 <ImputMask
                   name="CVV"
-                  value={formulario.values.CVV}
-                  onChange={formulario.handleChange}
-                  onBlur={formulario.handleBlur}
+                  value={form.values.CVV}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                   required
                   type="text"
                   id="CVV"
@@ -338,9 +338,9 @@ const Cart = () => {
                 <label htmlFor="Expiration"> Mes de vencimento </label>
                 <ImputMask
                   name="Expiration"
-                  value={formulario.values.Expiration}
-                  onChange={formulario.handleChange}
-                  onBlur={formulario.handleBlur}
+                  value={form.values.Expiration}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                   required
                   type="text"
                   id="Expiration"
@@ -351,9 +351,9 @@ const Cart = () => {
                 <label htmlFor="ExpirationYear"> Ano de vencimento </label>
                 <ImputMask
                   name="ExpirationYear"
-                  value={formulario.values.ExpirationYear}
-                  onChange={formulario.handleChange}
-                  onBlur={formulario.handleBlur}
+                  value={form.values.ExpirationYear}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
                   required
                   type="text"
                   id="ExpirationYear"
@@ -362,10 +362,7 @@ const Cart = () => {
               </SetForm>
             </S.SetGrup>
             <div>
-              <BotaoAdicionar
-                type="submit"
-                onClick={() => formulario.handleSubmit}
-              >
+              <BotaoAdicionar type="submit" onClick={() => form.handleSubmit}>
                 Continuar com o pagamento
               </BotaoAdicionar>
               <BotaoAdicionar type="button" style={{ marginTop: 8 }}>

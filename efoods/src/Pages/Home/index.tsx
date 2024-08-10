@@ -1,39 +1,40 @@
 import Footer from '../../components/Footer'
 import Hero from '../../components/Hero'
-import ListaDeRestaurantes from '../../components/ListaDeRestaurantes'
+import RestaurantList from '../../components/RestaurantList'
 import { useGetRestautentQuery } from '../../services/api'
 
-export interface Cardapio {
-  foto: string
-  preco: number
+export interface Menu {
+  photo: string
+  price: number
   id: number
-  nome: string
-  descricao: string
-  porcao: string
+  name: string
+  Menudescription: string
+  portion: string
 }
 
-export type TipoApi = {
+export type TypeApi = {
   id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: Cardapio[]
+  title: string
+  highlighted: boolean
+  type: string
+  score: number
+  description: string
+  cover: string
+  Menu: Menu[]
 }
 
 const Home = () => {
   const { data: Api } = useGetRestautentQuery()
   if (Api) {
+    console.log(Api)
     return (
       <>
         <Hero />
-        <ListaDeRestaurantes restaurantes={Api} />
+        <RestaurantList Restaurants={Api} />
         <Footer />
       </>
     )
   }
-  return <div>Carregando...</div>
+  return <div>loading...</div>
 }
 export default Home

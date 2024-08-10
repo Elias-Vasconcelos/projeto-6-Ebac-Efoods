@@ -1,31 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Cardapio } from '../../Pages/Home'
+import { Menu } from '../../Pages/Home'
 
-type CardapioState = {
-  Carrinho: Cardapio[]
+type MenuState = {
+  Cart: Menu[]
   View: boolean
 }
 
-const initialState: CardapioState = {
-  Carrinho: [],
+const initialState: MenuState = {
+  Cart: [],
   View: false
 }
 const CartSlice = createSlice({
-  name: 'Carrinho',
+  name: 'Cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Cardapio>) => {
-      const ProdutoJaAdicionado = state.Carrinho.find(
-        (carrinho) => carrinho.nome === action.payload.nome
+    add: (state, action: PayloadAction<Menu>) => {
+      const ProdutoJaAdicionado = state.Cart.find(
+        (Cart) => Cart.name === action.payload.name
       )
       if (ProdutoJaAdicionado) {
-        alert('Este Item ja foi adicionado ao seu carrinho')
-      } else state.Carrinho.push(action.payload)
+        alert('Este Item ja foi adicionado ao seu Cart')
+      } else state.Cart.push(action.payload)
     },
-    remove: (state, action: PayloadAction<Cardapio>) => {
-      state.Carrinho = [
-        ...(state.Carrinho = state.Carrinho.filter(
-          (carrinho) => carrinho.id !== action.payload.id
+    remove: (state, action: PayloadAction<Menu>) => {
+      state.Cart = [
+        ...(state.Cart = state.Cart.filter(
+          (Cart) => Cart.id !== action.payload.id
         ))
       ]
     },
@@ -36,7 +36,7 @@ const CartSlice = createSlice({
       state.View = false
     },
     clean: (state) => {
-      state.Carrinho = []
+      state.Cart = []
     }
   }
 })

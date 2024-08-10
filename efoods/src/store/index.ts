@@ -5,7 +5,7 @@ import api from '../services/api'
 
 export const store = configureStore({
   reducer: {
-    Carrinho: CartSlice,
+    Cart: CartSlice,
     [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>

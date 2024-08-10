@@ -15,7 +15,7 @@ export const Baner = styled.div`
     margin-top: 64px;
   }
 `
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   margin-top: 138px;
   width: 536px;
   font-size: 36px;
