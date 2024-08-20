@@ -11,14 +11,14 @@ const RestaurantList = ({ Restaurants }: Props) => (
     {Restaurants.map((Restaurant) => (
       <li key={Restaurant.id}>
         <RestaurantCard
-          description={Restaurant.description}
+          descricao={Restaurant.descricao}
           id={Restaurant.id}
-          cover={Restaurant.cover}
-          title={Restaurant.title}
-          score={Restaurant.score}
-          highlighted={Restaurant.highlighted}
-          type={Restaurant.type}
-          Menu={Restaurant.Menu}
+          capa={Restaurant.capa}
+          titulo={Restaurant.titulo}
+          avaliacao={Restaurant.avaliacao}
+          destacado={Restaurant.destacado}
+          tipo={Restaurant.tipo}
+          cardapio={Restaurant.cardapio}
         />
       </li>
     ))}

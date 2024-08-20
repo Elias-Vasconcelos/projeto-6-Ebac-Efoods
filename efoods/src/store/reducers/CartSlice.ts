@@ -16,7 +16,7 @@ const CartSlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<Menu>) => {
       const ProdutoJaAdicionado = state.Cart.find(
-        (Cart) => Cart.name === action.payload.name
+        (Cart) => Cart.nome === action.payload.nome
       )
       if (ProdutoJaAdicionado) {
         alert('Este Item ja foi adicionado ao seu Cart')

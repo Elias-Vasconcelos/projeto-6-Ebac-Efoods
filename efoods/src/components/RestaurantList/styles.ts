@@ -7,12 +7,13 @@ export const ListContainer = styled.ul`
   width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(472px);
+  grid-template-rows: 472px;
   gap: 48px 80px;
   justify-content: center;
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 472px;
+    grid-template-rows: 472px;
     justify-content: center;
     gap: 40 0;
   }

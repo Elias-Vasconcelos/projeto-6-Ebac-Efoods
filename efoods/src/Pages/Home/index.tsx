@@ -4,23 +4,23 @@ import RestaurantList from '../../components/RestaurantList'
 import { useGetRestautentQuery } from '../../services/api'
 
 export interface Menu {
-  photo: string
-  price: number
+  foto: string
+  preco: number
   id: number
-  name: string
-  Menudescription: string
-  portion: string
+  nome: string
+  descricao: string
+  porcao: string
 }
 
 export type TypeApi = {
   id: number
-  title: string
-  highlighted: boolean
-  type: string
-  score: number
-  description: string
-  cover: string
-  Menu: Menu[]
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: Menu[]
 }
 
 const Home = () => {

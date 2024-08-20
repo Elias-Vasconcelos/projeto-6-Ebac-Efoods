@@ -37,17 +37,17 @@ const Modal = ({ Closer, Content }: Props) => {
           </span>
         </div>
         <S.ModalContent>
-          <img src={Content.photo} alt="Pizza" />
+          <img src={Content.foto} alt="Pizza" />
           <div>
-            <h4>{Content.name}</h4>
+            <h4>{Content.nome}</h4>
             <p>
-              {Content.Menudescription}
+              {Content.descricao}
               <br />
               <br />
-              {Content.portion}
+              {Content.porcao}
             </p>
             <BotaoAdicionar onClick={() => dispatch(add(Content))}>
-              Adicionar ao carrinho - ${formataPreco(Content.price)}
+              Adicionar ao carrinho - ${formataPreco(Content.preco)}
             </BotaoAdicionar>
           </div>
         </S.ModalContent>

@@ -6,30 +6,35 @@ import star from '../../assets/Star.svg'
 type Props = TypeApi
 
 const Restaurant = ({
-  title,
-  score,
-  cover,
-  description,
-  type,
-  highlighted,
+  titulo,
+  avaliacao,
+  capa,
+  descricao,
+  tipo,
+  destacado,
   id
-}: Props) => (
-  <S.Card>
-    <div style={{ position: 'absolute', top: 16, right: 16 }}>
-      <S.Teg> {type} </S.Teg>
-      {highlighted === true ? <S.Teg> Destaque da semana </S.Teg> : <div></div>}
-    </div>
-    <S.Image src={cover} />
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <S.Title> {title} </S.Title>
-      <div style={{ display: 'flex' }}>
-        <S.Score> {score} </S.Score>
-        <img src={star} alt="star" />
+}: Props) => {
+  const sliceDescription = (descricao: string) =>
+    descricao.slice(0, 150) + '...'
+
+  return (
+    <S.Card>
+      <div style={{ position: 'absolute', top: 16, right: 16 }}>
+        <S.Teg> {tipo} </S.Teg>
+        {destacado === true ? <S.Teg> Destaque da semana </S.Teg> : <div></div>}
       </div>
-    </div>
-    <S.Score> {description} </S.Score>
-    <S.Button to={`/Perfil/${id}`}>Saiba mais</S.Button>
-  </S.Card>
-)
+      <S.Image src={capa} />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <S.Title> {titulo} </S.Title>
+        <div style={{ display: 'flex' }}>
+          <S.Score> {avaliacao} </S.Score>
+          <img src={star} alt="star" />
+        </div>
+      </div>
+      <S.Description> {sliceDescription(descricao)} </S.Description>
+      <S.Button to={`/Perfil/${id}`}>Saiba mais</S.Button>
+    </S.Card>
+  )
+}
 
 export default Restaurant

@@ -20,7 +20,7 @@ const Cart = () => {
 
   const getTotalPrice = () => {
     return Cart.reduce((accumulator, currentvalue) => {
-      return (accumulator += currentvalue.price)
+      return (accumulator += currentvalue.preco)
     }, 0)
   }
   const [Payment, setPayment] = useState(enums.SetPayment.Order)
@@ -91,7 +91,7 @@ const Cart = () => {
       purchese({
         products: Cart.map((item) => ({
           id: item.id,
-          price: Number(formataPreco(item.price))
+          price: Number(formataPreco(item.preco))
         })),
         delivery: {
           receiver: values.receive,
@@ -163,10 +163,10 @@ const Cart = () => {
               <S.cardList>
                 {Cart.map((Item) => (
                   <S.card key={Item.id}>
-                    <img src={Item.photo} alt="" />
+                    <img src={Item.foto} alt="" />
                     <div>
-                      <h3> {Item.name} </h3>
-                      <p> {formataPreco(Item.price)} </p>
+                      <h3> {Item.nome} </h3>
+                      <p> {formataPreco(Item.preco)} </p>
                     </div>
                     <span>
                       <img
@@ -365,7 +365,11 @@ const Cart = () => {
               <BotaoAdicionar type="submit" onClick={() => form.handleSubmit}>
                 Continuar com o pagamento
               </BotaoAdicionar>
-              <BotaoAdicionar type="button" style={{ marginTop: 8 }}>
+              <BotaoAdicionar
+                type="button"
+                onClick={() => setPayment(enums.SetPayment.Delivery)}
+                style={{ marginTop: 8 }}
+              >
                 Voltar para a edicao de endereco
               </BotaoAdicionar>
             </div>

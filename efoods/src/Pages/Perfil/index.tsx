@@ -19,7 +19,7 @@ const Perfil = () => {
         <Header />
         <Presentation Content={api} />
         {View === true && <Cart />}
-        <DishList Api={api.Menu} />
+        <DishList Api={api.cardapio} />
         <Footer />
       </>
     )

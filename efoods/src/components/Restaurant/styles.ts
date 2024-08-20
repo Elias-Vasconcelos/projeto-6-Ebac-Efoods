@@ -29,6 +29,7 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   margin: 8px 16px;
+  height: 90px;
 `
 export const Teg = styled.div`
   margin-left: 16px;

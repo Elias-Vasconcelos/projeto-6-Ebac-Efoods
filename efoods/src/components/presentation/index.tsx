@@ -8,11 +8,11 @@ type Props = {
 const Presentation = ({ Content }: Props) => {
   return (
     <S.presentationcaoContainer
-      style={{ backgroundImage: `url(${Content.cover}) ` }}
+      style={{ backgroundImage: `url(${Content.capa}) ` }}
     >
       <S.Content>
-        <p> {Content.type} </p>
-        <h3> {Content.title} </h3>
+        <p> {Content.tipo} </p>
+        <h3> {Content.titulo} </h3>
       </S.Content>
     </S.presentationcaoContainer>
   )

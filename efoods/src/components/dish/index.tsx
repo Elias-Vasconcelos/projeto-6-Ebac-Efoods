@@ -14,11 +14,11 @@ const Dish = ({ Content }: Props) => {
   return (
     <>
       <S.DishCard>
-        <img src={Content.photo} alt="" />
-        <h4>{Content.name}</h4>
-        <p>{sliceDescription(Content.Menudescription)}</p>
+        <img src={Content.foto} alt="" />
+        <h4>{Content.nome}</h4>
+        <p>{sliceDescription(Content.descricao)}</p>
         <br />
-        <p> {Content.portion} </p>
+        <p> {Content.porcao} </p>
         <BotaoAdicionar onClick={() => setviewModal(true)}>
           Adicionar ao carrinho
         </BotaoAdicionar>
