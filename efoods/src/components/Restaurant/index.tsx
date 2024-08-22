@@ -15,8 +15,7 @@ const Restaurant = ({
   id
 }: Props) => {
   const sliceDescription = (descricao: string) =>
-    descricao.slice(0, 150) + '...'
-
+    descricao.slice(0, 272) + '...'
   return (
     <S.Card>
       <div style={{ position: 'absolute', top: 16, right: 16 }}>
@@ -24,7 +23,13 @@ const Restaurant = ({
         {destacado === true ? <S.Teg> Destaque da semana </S.Teg> : <div></div>}
       </div>
       <S.Image src={capa} />
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: '97%'
+        }}
+      >
         <S.Title> {titulo} </S.Title>
         <div style={{ display: 'flex' }}>
           <S.Score> {avaliacao} </S.Score>

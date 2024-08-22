@@ -10,15 +10,14 @@ type Props = {
 
 const Dish = ({ Content }: Props) => {
   const [viewModal, setviewModal] = useState(false)
-  const sliceDescription = (descricao: string) => descricao.slice(0, 92) + '...'
+  const sliceDescription = (descricao: string) =>
+    descricao.slice(0, 132) + '...'
   return (
     <>
       <S.DishCard>
         <img src={Content.foto} alt="" />
         <h4>{Content.nome}</h4>
         <p>{sliceDescription(Content.descricao)}</p>
-        <br />
-        <p> {Content.porcao} </p>
         <BotaoAdicionar onClick={() => setviewModal(true)}>
           Adicionar ao carrinho
         </BotaoAdicionar>

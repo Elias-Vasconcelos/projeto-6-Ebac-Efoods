@@ -9,25 +9,24 @@ export const DishCard = styled.div`
   img {
     width: 94%;
     margin: 3%;
-    height: 217px;
+    height: 167px;
     object-fit: cover;
   }
 
   h4 {
     font-size: 16px;
     font-weight: bold;
-    margin-left: 8px;
+    margin: 0 8px 8px 8px;
   }
 
-  p:first-of-type {
-    height: 64px;
-  }
   p {
+    height: 88px;
+    margin-left: 8px;
     font-size: 14px;
     line-height: 22px;
-    margin: 8px 8px 0 8px;
+    font-weight: 400;
+    width: 94%;
   }
-
   span {
     width: 94%;
     margin: 3%;

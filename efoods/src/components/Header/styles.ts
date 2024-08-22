@@ -4,15 +4,19 @@ import { breakpoints, cores } from '../../Styles'
 import { Link } from 'react-router-dom'
 
 export const Content = styled.div`
-  max-width: 960px;
+  max-width: 1140px;
   width: 100%;
   padding: 60px;
-  paddi-botton: 80px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 40px;
+  }
 `
 
 export const tabletContent = styled(Content)`
@@ -41,10 +45,15 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   max-height: 200px;
+  display: flex;
+  justify-content: center;
 
   @media (max-width: ${breakpoints.desktop}) {
     ${Content} {
       display: none;
+      img {
+        position: relative;
+      }
     }
     ${tabletContent} {
       display: flex;

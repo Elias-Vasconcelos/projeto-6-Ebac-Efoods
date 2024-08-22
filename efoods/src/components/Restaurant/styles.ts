@@ -6,6 +6,7 @@ export const Card = styled.div`
   background-color: ${cores.Branco};
   position: relative;
   color: ${cores.Rosa};
+  border: 1px solid ${cores.Rosa};
 `
 export const Image = styled.img`
   width: 100%;
@@ -28,8 +29,7 @@ export const Score = styled.p`
 export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
-  margin: 8px 16px;
-  height: 90px;
+  margin: 8px;
 `
 export const Teg = styled.div`
   margin-left: 16px;

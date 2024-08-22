@@ -7,7 +7,7 @@ export const ListContainer = styled.ul`
   width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 472px;
+  grid-template-rows: repeat(3);
   gap: 48px 80px;
   justify-content: center;
 
