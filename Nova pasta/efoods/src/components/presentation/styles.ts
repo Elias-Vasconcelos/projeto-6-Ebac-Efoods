@@ -38,5 +38,6 @@ export const Content = styled.div`
   h3 {
     margin: 156px 0 32px 0;
     font-weight: bold;
+    font-size: 32px;
   }
 `
